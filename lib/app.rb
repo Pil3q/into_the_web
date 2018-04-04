@@ -12,8 +12,17 @@ get '/test' do
   "test"
 end
 
-get '/cat' do
-  "<div style='border:3px dashed red'>
-  <img src=http://bit.ly/1eze8aE>
-  </div>"
+get '/random-cat' do
+  @name = ["Amigo", "Oscar", "Viking"].sample
+  erb(:index)
+end
+
+post '/named-cat' do
+  p params
+  @name = params[:name]
+  erb(:form)
+end
+
+get '/form' do
+  erb(:form)
 end
